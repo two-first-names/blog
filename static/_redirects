@@ -1,0 +1,2 @@
+/.well-known/webfinger https://toot.twofirstnames.org/.well-known/webfinger 301
+/.well-known/webfinger* https://toot.twofirstnames.org/.well-known/webfinger:splat 301
