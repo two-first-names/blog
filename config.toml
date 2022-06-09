@@ -1,4 +1,5 @@
 baseurl = "/"
+enableGitInfo = true
 languageCode = "en-us"
 theme = "terminal"
 paginate = 5
@@ -86,6 +87,6 @@ paginate = 5
         name = "About"
         url = "/about"
       [[languages.en.menu.main]]
-        identifier = "showcase"
-        name = "Showcase"
-        url = "/showcase"
+        identifier = "links"
+        name = "Links"
+        url = "/links"
