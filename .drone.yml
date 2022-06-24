@@ -8,7 +8,7 @@ steps:
   commands:
   - git clone https://git.twofirstnames.org/joe/infra.git
 - name: deploy hugo
-  image: plugins/ansible:3
+  image: twofirstnames/drone-ansible
   settings:
     playbook: infra/ansible/hugo.yml
     galaxy: infra/ansible/requirements.yml
