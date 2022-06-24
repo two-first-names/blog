@@ -3,7 +3,7 @@
 title: The Making of a Blog
 date: 2022-06-24
 author: Joe Roberts <joe@twofirstnames.org>
-draft: true
+draft: false
 
 ---
 
