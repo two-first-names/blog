@@ -3,6 +3,10 @@ type: kubernetes
 name: default
 
 steps:
+- name: submodules
+  image: alpine/git
+  commands:
+  - git submodule update --init --recursive
 - name: deploy hugo
   image: twofirstnames/drone-ansible
   settings:
