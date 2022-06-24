@@ -66,6 +66,44 @@ This will automatically add tags/categories to the post, and allow you to view a
 
 For a full example of a page, the source for this blog post is available at https://git.twofirstnames.org/joe/blog/src/branch/main/content/posts/the-making-of-a-blog.md.
 
+# My Setup
+
+So far I’ve talked in very broad senses about Hugo, so let’s move on to how I’m running it all. As I said earlier, I am using a mix of Gitea, DroneCI and Ansible to run my blog. The final blog runs on an AWS EC2 server using nginx, though I am considering alternatives to reduce cost at the moment.
+
+I won’t go into too much detail about how I set up the individual services, each would be a blog post on their own! Gitea really works very similar to GitHub (the look and feel are quite alike) and really just works as a git server to host the code.
+
+The process starts with DroneCI, then. Whenever I commit a new update of the blog to git, it starts a pipeline in DroneCI. The pipeline is defined in a `.drone.yml` file in the repository[^droneyml] and this contains the definitions for what steps to run during the run. 
+
+Currently, the pipeline is relatively simple, it has three parts:
+- Clone the blog repository.
+- Initialise submodules, specifically for themes.
+- Execute the Ansible playbook to deploy the blog to the server.
+
+The ins-and-outs of Ansible are probably out of scope for this post, though I will probably return to it. I wouldn’t want this to get too long! The playbook[^playbook] can be summarised with the following steps:
+- Prepare the system, making sure the OS is up to date and required packages are installed.
+- Download and install Hugo.
+- Upload the checked out blog to the remote server. This uses rsync, with a wrapper in Ansible courtesy of the `ansible.posix.synchronize` module.
+- Build the site on the remote machine using `hugo`. Optionally, it can be built with the `-D` flag to show draft posts.
+- Create an nginx configuration to serve the now generated site.
+- (Re)start and enable the nginx service, as required.
+
+With all these steps, the blog will have been deployed from the git repository onto an nginx server and can then be accessed from the internet.
+
+A couple things that are not covered in this playbook, though I might add them:
+- Setting up DNS records. I currently use Cloudflare, and I’m not sure if I want to tie it too much into one vendor.
+- Setting up TLS certificates. I am using Let’s Encrypt to generate certificates, though I may use Cloudflare for that once I enabled DDoS protection. Let’s Encrypt is certainly more ‘vendor agnostic’, and I do have an Ansible role for that elsewhere[^lerole]. 
+
+# Final Thoughts
+
+I hope this was useful to at least someone! I’ve had lots of fun getting all the various components of this to work, and it’s honestly just scratching the surface of what I’m currently running.
+
+There are a few things I’d love to expand upon and I may do in future blog posts:
+- Hugo Themes (if I make my own, I might do a write up of how to do that).
+- A deeper dive into how the CI/CD and Ansible playbook works.
+- I will be doing a post on how I’ve set up Gitea and DroneCI, along with other services that support them. 
+
+I’m always happy to receive feedback on my blog posts. I’ve got various ways to contact me on my Links page, so reach out if you want to chat!
+
 # References
 
 [^hugo]: https://gohugo.io/
@@ -79,3 +117,6 @@ For a full example of a page, the source for this blog post is available at http
 [^install]: https://gohugo.io/getting-started/installing/
 [^frontmatter]: https://gohugo.io/content-management/front-matter/
 [^markdownguide]: https://www.markdownguide.org/
+[^droneyml]: https://git.twofirstnames.org/joe/blog/src/branch/main/.drone.yml
+[^playbook]: https://git.twofirstnames.org/joe/blog/src/branch/main/ansible
+[^lerole]: https://git.twofirstnames.org/joe/infra/src/branch/main/ansible/roles/letsencrypt
