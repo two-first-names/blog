@@ -3,22 +3,12 @@ type: kubernetes
 name: default
 
 steps:
-- name: clone infra
-  image: alpine/git
-  commands:
-  - git clone https://git.twofirstnames.org/joe/infra.git
 - name: deploy hugo
   image: twofirstnames/drone-ansible
   settings:
-    playbook: infra/ansible/hugo.yml
-    galaxy: infra/ansible/requirements.yml
-    inventory: infra/ansible/inventory
+    playbook: ansible/main.yml
+    inventory: ansible/inventory
     private_key:
       from_secret: private_key
     vault_password:
       from_secret: vault_password
-  env:
-    AWS_ACCESS_KEY_ID:
-      from_secret: aws_access_key_id
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: aws_secret_access_key

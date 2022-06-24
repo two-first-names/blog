@@ -1,0 +1,69 @@
+- name: Install packages
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+    - nginx
+    - rsync
+- name: Download Hugo {{ hugo_version }}
+  become: yes
+  ansible.builtin.get_url:
+    url: https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-ARM64.tar.gz
+    dest: /tmp/hugo-{{ hugo_version }}_Linux-ARM64.tar.gz
+    mode: '0600'
+- name: Create /tmp/hugo-{{ hugo_version }}/
+  become: yes
+  ansible.builtin.file:
+    name: "/tmp/hugo-{{ hugo_version }}"
+    state: directory
+- name: Unarchive Hugo
+  become: yes
+  ansible.builtin.unarchive:
+    src: "/tmp/hugo-{{ hugo_version }}_Linux-ARM64.tar.gz"
+    dest: "/tmp/hugo-{{ hugo_version }}"
+    remote_src: true
+    mode: '0755'
+- name: Install Hugo
+  become: yes
+  ansible.builtin.copy:
+    src: "/tmp/hugo-{{ hugo_version }}/hugo"
+    dest: "/usr/local/bin/hugo"
+    remote_src: true
+    mode: '0755'
+- name: Create /var/hugo
+  become: yes
+  ansible.builtin.file:
+    name: "/var/hugo"
+    state: directory
+- name: Upload site repository
+  become: yes
+  ansible.posix.synchronize:
+    src: ../../../../
+    dest: "/var/hugo/{{ domain }}"
+    recursive: yes
+    delete: yes
+- name: Build Hugo site
+  become: yes
+  ansible.builtin.shell:
+    chdir: "/var/hugo/{{ domain }}"
+    cmd: hugo -b https://{{ domain }}/
+  when: not draft
+- name: Build draft Hugo site
+  become: yes
+  ansible.builtin.shell:
+    chdir: "/var/hugo/{{ domain }}"
+    cmd: hugo -DF -b https://{{ domain }}/
+  when: draft
+- name: Copy nginx config
+  become: true
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/conf.d/{{ domain }}.conf
+  notify:
+  - Restart nginx
+- name: Enable and start nginx
+  become: true
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: yes

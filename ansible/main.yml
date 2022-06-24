@@ -1,0 +1,9 @@
+- hosts: gitea
+  roles:
+  - role: hugo
+    domain: www.twofirstnames.org
+  - role: hugo
+    domain: twofirstnames.org
+  - role: hugo
+    domain: draft.twofirstnames.org
+    draft: yes
