@@ -90,3 +90,6 @@ paginate = 5
         identifier = "links"
         name = "Links"
         url = "/links"
+
+[outputFormats.Calendar]
+	protocol = "https://"
