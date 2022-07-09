@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+VERSION:2.0
+BEGIN:VEVENT
+DTSTAMP:{{dateFormat "20060102T150405" .Date}}
+STATUS:CONFIRMED
+UID:{{dateFormat "20060102T150405" .Params.start}}@twofirstnames.org
+DTSTART:{{dateFormat "20060102T150405" .Params.start}}
+DTEND:{{dateFormat "20060102T150405" .Params.end}}
+SUMMARY:{{.Title}}
+DESCRIPTION:{{.Params.description}} (Info: {{with .Params.link}}{{.}}{{else}}{{.Permalink | safeURL}}{{end}})
+LOCATION:{{with .Params.location}}{{.}}{{else}}TBD{{end}}
+X-ALT-DESC;FMTTYPE=text/html:{{.Title}}<br>Location: {{with .Params.location}}{{.}}{{else}}TBD{{end}}<br>{{with .Params.link}}{{.}}{{else}}{{.Permalink | safeURL}}{{end}}
+END:VEVENT
+END:VCALENDAR
