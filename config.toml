@@ -90,3 +90,8 @@ paginate = 5
         identifier = "links"
         name = "Links"
         url = "/links"
+
+[deployment]
+[[deployment.targets]]
+name = "aws"
+URL = "s3://twofirstnames-blog?region=eu-west-2"
