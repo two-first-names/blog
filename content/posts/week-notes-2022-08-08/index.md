@@ -48,3 +48,13 @@ My first day in the office! It was hot! 🔥🔥🔥 Far too hot. Peggy spent th
 But it was nice to get out, travel and chill on the tram. The office is really lovely, we share it with NICE and a couple other government departments/NGO -- so it's pretty big! I got a tour of the building as part of my induction, including the backstage areas; even got to see the HVAC up close!
 
 Despite being in the office, my day was pretty much normal; didn't really have too many meetings at least. I did go to the opticians, and spent far too long there, but got some snazzy new glasses out of it, I'll get them in two weeks and they'll definitely take some getting used to!
+
+# Friday
+
+It's the end of the week, it's still far too hot, but me and Peggy are surviving!
+
+Not a whole lot happened today, which I guess is to be expected for a Friday. I'll give my final thoughts on the week, in that case.
+
+It's been great! I've made friends, gotten stuck into work and felt like I was part of a community! Hopefully more of that will come as well, I don't intend on stopping any time soon. :)
+
+Next week is sure to be just as interesting, I should have week notes then, so stay tuned!
