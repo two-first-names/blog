@@ -41,7 +41,7 @@ I've got a load of team meetings coming up, mostly discussing our Ways of Workin
 
 On more interesting things, GDS had their monthly SRE Community meeting today, which was super interesting! People are, as always, really nice and there was lots of good discussion. It's so good to see I have a community backing me from across GDS while I'm working on my team.
 
-# Thursday
+# Thursday
 
 My first day in the office! It was hot! 🔥🔥🔥 Far too hot. Peggy spent the day in daycare, so at least she had aircon and a paddling pool, only a bit jealous.
 
