@@ -32,3 +32,19 @@ Slowly starting to get into a routine, which is nice. I attended my first stand-
 Over the course of today, I had a few other meetings with the wider team, one had over a hundred people in it! It was all very informal and enjoyable, really finding myself getting into the team.
 
 To cap off the day, I attended a lightning talk on Rust and why it isn't a C replacement. It was super informative and I'll try to link to it if it was recorded and available online.
+
+# Wednesday
+
+Half way through the week! 🎉 Honestly, this is just so exciting for me!
+
+I've got a load of team meetings coming up, mostly discussing our Ways of Working and refining the backlog. Fun stuff! It'll help for alignment across the team which is good.
+
+On more interesting things, GDS had their monthly SRE Community meeting today, which was super interesting! People are, as always, really nice and there was lots of good discussion. It's so good to see I have a community backing me from across GDS while I'm working on my team.
+
+# Thursday
+
+My first day in the office! It was hot! 🔥🔥🔥 Far too hot. Peggy spent the day in daycare, so at least she had aircon and a paddling pool, only a bit jealous.
+
+But it was nice to get out, travel and chill on the tram. The office is really lovely, we share it with NICE and a couple other government departments/NGO -- so it's pretty big! I got a tour of the building as part of my induction, including the backstage areas; even got to see the HVAC up close!
+
+Despite being in the office, my day was pretty much normal; didn't really have too many meetings at least. I did go to the opticians, and spent far too long there, but got some snazzy new glasses out of it, I'll get them in two weeks and they'll definitely take some getting used to!
